@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true" role="presentation">
     <div
       class="absolute rounded-full bg-gradient-to-br from-klein-blue/10 to-klein-blue/5 animate-float-slow"
       style="width: 400px; height: 400px; top: 10%; left: 5%; animation-delay: 0s;"

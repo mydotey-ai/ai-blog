@@ -1,5 +1,9 @@
 <template>
-  <article class="group relative bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-klein-blue/20 overflow-hidden">
+  <article
+    class="group relative bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-klein-blue/20 overflow-hidden"
+    role="article"
+    :aria-labelledby="`post-title-${post.id}`"
+  >
     <!-- Left glow bar -->
     <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-klein-blue to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -21,7 +25,10 @@
     </div>
 
     <router-link :to="`/posts/${post.slug}`" class="block">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-klein-blue group-hover:via-purple-600 group-hover:to-klein-blue group-hover:bg-clip-text group-hover:text-transparent">
+      <h2
+        :id="`post-title-${post.id}`"
+        class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-klein-blue group-hover:via-purple-600 group-hover:to-klein-blue group-hover:bg-clip-text group-hover:text-transparent"
+      >
         {{ post.title }}
       </h2>
     </router-link>
