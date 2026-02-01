@@ -65,6 +65,7 @@ a:hover {
 .prose {
   font-size: 1.125rem;
   line-height: 1.8;
+  max-width: 720px;
 }
 
 .prose h2 {
@@ -72,6 +73,10 @@ a:hover {
   font-weight: 700;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #0022FF 0%, #0066FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .prose h3 {
@@ -79,10 +84,22 @@ a:hover {
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .prose p {
   margin-bottom: 1.5rem;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.prose a:hover {
+  color: var(--accent-hover);
 }
 
 .prose code {
@@ -91,21 +108,50 @@ a:hover {
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-size: 0.9em;
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .prose pre {
   background: var(--text-primary);
   color: var(--bg-primary);
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow-x: auto;
   margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 34, 255, 0.1);
 }
 
 .prose pre code {
   background: none;
   padding: 0;
   color: inherit;
+  font-weight: 400;
+}
+
+.prose blockquote {
+  border-left: 4px solid;
+  border-image: linear-gradient(180deg, #0022FF, #0066FF) 1;
+  background: rgba(0, 34, 255, 0.02);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+.prose img {
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 34, 255, 0.08);
+  margin: 2rem 0;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
 }
 
 /* Buttons */

@@ -12,27 +12,51 @@
       </div>
 
       <article v-else class="max-w-4xl mx-auto">
-        <div class="flex gap-4 mb-8">
+        <!-- 标签 -->
+        <div class="flex gap-3 mb-8 animate-fade-in-up">
           <span
             v-for="tag in post?.tags"
             :key="tag"
-            class="text-xs font-semibold uppercase text-klein-blue"
+            class="px-3 py-1 text-xs font-semibold uppercase rounded-full
+                   bg-gradient-to-r from-klein-blue/10 to-klein-blue-light/10
+                   border border-klein-blue/20 text-klein-blue"
           >
             {{ tag }}
           </span>
         </div>
 
-        <h1 class="display-title text-6xl mb-8">{{ post?.title }}</h1>
+        <!-- 标题 -->
+        <h1
+          class="display-title text-5xl md:text-6xl mb-8 animate-fade-in-up"
+          style="animation-delay: 0.1s; animation-fill-mode: backwards"
+        >
+          {{ post?.title }}
+        </h1>
 
-        <div class="flex gap-6 text-sm text-tertiary mb-16">
+        <!-- 元信息 -->
+        <div
+          class="flex gap-6 text-sm text-tertiary mb-16 animate-fade-in-up"
+          style="animation-delay: 0.2s; animation-fill-mode: backwards"
+        >
           <span>{{ formatDate(post?.createdAt || '') }}</span>
           <span>{{ post?.views }} 次阅读</span>
         </div>
 
-        <div class="prose" v-html="renderedContent"></div>
+        <!-- 正文 -->
+        <div
+          class="prose animate-fade-in-up"
+          v-html="renderedContent"
+          style="animation-delay: 0.3s; animation-fill-mode: backwards"
+        />
       </article>
 
-      <CommentSection v-if="post" :post-id="post.id" class="max-w-4xl mx-auto mt-32" />
+      <!-- 评论区 -->
+      <CommentSection
+        v-if="post"
+        :post-id="post.id"
+        class="max-w-4xl mx-auto mt-32 animate-fade-in-up"
+        style="animation-delay: 0.4s; animation-fill-mode: backwards"
+      />
     </main>
   </div>
 </template>
