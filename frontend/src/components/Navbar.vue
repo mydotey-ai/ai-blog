@@ -1,7 +1,9 @@
 <template>
-  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm border-b border-gray-200 z-50">
+  <nav class="fixed top-0 left-0 right-0 bg-white/70 backdrop-blur-xl border-b border-klein-blue/10 z-50 shadow-sm">
     <div class="container flex items-center justify-between h-20">
-      <router-link to="/" class="font-bold text-xl">AI BLOG</router-link>
+      <router-link to="/" class="font-bold text-xl bg-gradient-to-r from-klein-blue to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+        AI BLOG
+      </router-link>
 
       <div class="flex gap-8">
         <router-link to="/" class="nav-link">首页</router-link>
@@ -42,6 +44,7 @@ onMounted(async () => {
   letter-spacing: 0.05em;
   position: relative;
   padding-bottom: 4px;
+  transition: color 0.25s;
 }
 
 .nav-link::after {
@@ -51,11 +54,15 @@ onMounted(async () => {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--accent);
-  transition: width 0.25s;
+  background: linear-gradient(to right, #0022FF, #9333ea);
+  transition: width 0.3s ease-out;
 }
 
 .nav-link:hover::after {
   width: 100%;
+}
+
+.nav-link:hover {
+  color: #0022FF;
 }
 </style>
