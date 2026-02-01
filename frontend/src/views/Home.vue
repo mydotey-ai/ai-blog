@@ -1,10 +1,15 @@
 <template>
-  <div>
+  <div class="relative">
+    <GridBackground :with-gradient="true" />
+    <FloatingShapes />
+
     <Navbar />
 
-    <main class="container py-24">
-      <div class="mb-32">
-        <h1 class="display-title text-7xl md:text-9xl mb-8">AI Blog</h1>
+    <main class="container py-24 relative z-10">
+      <div class="mb-32 relative">
+        <h1 class="display-title text-7xl md:text-9xl mb-8 bg-gradient-to-r from-klein-blue via-purple-600 to-klein-blue bg-clip-text text-transparent animate-gradient" style="text-shadow: 0 0 40px rgba(0, 34, 255, 0.3);">
+          AI Blog
+        </h1>
         <p class="text-2xl text-secondary max-w-2xl">探索人工智能、机器学习和技术创新的前沿思想</p>
       </div>
 
@@ -36,6 +41,8 @@ import { ref, onMounted, computed } from 'vue'
 import { getPosts, type Post } from '@/services/api'
 import Navbar from '@/components/Navbar.vue'
 import PostCard from '@/components/PostCard.vue'
+import GridBackground from '@/components/decorations/GridBackground.vue'
+import FloatingShapes from '@/components/decorations/FloatingShapes.vue'
 
 const posts = ref<Post[]>([])
 const loading = ref(true)
