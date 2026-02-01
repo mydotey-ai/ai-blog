@@ -195,3 +195,23 @@ a:hover {
   min-height: 120px;
   resize: vertical;
 }
+
+/* 性能优化 */
+.hover-lift,
+.shape,
+.floating-shapes {
+  will-change: transform;
+}
+
+/* 减少不必要的重绘 */
+.post-card,
+.nav-link {
+  contain: layout style paint;
+}
+
+/* GPU 加速 */
+.animate-fade-in-up,
+.animate-float {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
