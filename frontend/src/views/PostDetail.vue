@@ -52,7 +52,7 @@ const error = ref('')
 
 const renderedContent = computed(() => {
   if (!post.value) return ''
-  return marked(post.value.content)
+  return marked.parse(post.value.content, { async: false }) as string
 })
 
 const formatDate = (dateString: string) => {

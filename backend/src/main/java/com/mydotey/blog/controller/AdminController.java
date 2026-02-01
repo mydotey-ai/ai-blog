@@ -38,6 +38,11 @@ public class AdminController {
         return postService.getAllPostsForAdmin(PageRequest.of(page, size, Sort.by("createdAt").descending()));
     }
 
+    @GetMapping("/posts/{id}")
+    public PostDTO getPost(@PathVariable Long id) {
+        return postService.getPostById(id);
+    }
+
     @PostMapping("/posts")
     public PostDTO createPost(@Valid @RequestBody CreatePostRequest request) {
         return postService.createPost(request);

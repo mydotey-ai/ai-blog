@@ -74,7 +74,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { adminCreatePost, adminUpdatePost, getPost } from '@/services/api'
+import { adminCreatePost, adminUpdatePost, adminGetPost } from '@/services/api'
 
 const route = useRoute()
 const router = useRouter()
@@ -117,7 +117,7 @@ const handleSubmit = async () => {
 onMounted(async () => {
   if (isEdit.value) {
     try {
-      const response = await getPost(route.params.id as string)
+      const response = await adminGetPost(Number(route.params.id))
       const post = response.data
       form.value = {
         title: post.title,

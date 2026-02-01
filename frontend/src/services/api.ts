@@ -76,6 +76,9 @@ export const createComment = (data: {
 export const adminGetPosts = (page = 0, size = 10) =>
   api.get<PageResponse<Post>>('/admin/posts', { params: { page, size } })
 
+export const adminGetPost = (id: number) =>
+  api.get<Post>(`/admin/posts/${id}`)
+
 export const adminCreatePost = (data: {
   title: string
   slug: string

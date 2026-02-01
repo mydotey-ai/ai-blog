@@ -4,6 +4,7 @@ import com.mydotey.blog.dto.CreatePostRequest;
 import com.mydotey.blog.dto.PostDTO;
 import com.mydotey.blog.entity.Post;
 import com.mydotey.blog.entity.Tag;
+import com.mydotey.blog.exception.ResourceNotFoundException;
 import com.mydotey.blog.repository.PostRepository;
 import com.mydotey.blog.repository.TagRepository;
 import org.springframework.data.domain.Page;
@@ -41,9 +42,16 @@ public class PostService {
     @Transactional
     public PostDTO getPostBySlug(String slug) {
         Post post = postRepository.findBySlug(slug)
-            .orElseThrow(() -> new RuntimeException("Post not found"));
+            .filter(p -> "PUBLISHED".equals(p.getStatus()))
+            .orElseThrow(() -> new ResourceNotFoundException("文章未找到或未发布: " + slug));
         post.setViews(post.getViews() + 1);
         postRepository.save(post);
+        return toDTO(post);
+    }
+
+    public PostDTO getPostById(Long id) {
+        Post post = postRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("文章未找到: ID " + id));
         return toDTO(post);
     }
 
@@ -76,7 +84,7 @@ public class PostService {
     @Transactional
     public PostDTO updatePost(Long id, CreatePostRequest request) {
         Post post = postRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Post not found"));
+            .orElseThrow(() -> new ResourceNotFoundException("文章未找到: ID " + id));
 
         post.setTitle(request.getTitle());
         post.setSlug(request.getSlug());
