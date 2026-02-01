@@ -57,6 +57,13 @@ cd frontend && npm run dev          # 前端
 - **API**: `frontend/src/services/api.ts`
 - **样式**: `frontend/src/assets/styles/main.css`
 
+### UI 组件
+- **装饰组件**: `frontend/src/components/decorations/`
+  - `FloatingShapes.vue`: 浮动抽象图形
+  - `GridBackground.vue`: 网格背景
+- **动画系统**: `frontend/src/assets/styles/animations.css`
+- **Composables**: `frontend/src/composables/useScrollAnimation.ts`
+
 ### 数据库
 - **脚本**: `scripts/init-db.sql`
 - **初始化**: `DataInitializer.java` (自动创建管理员)
@@ -238,10 +245,11 @@ SELECT * FROM posts;
 
 ## 项目特色
 
-🎨 **克莱因蓝设计**
-- 主色 #0022FF，独特视觉风格
-- 超大留白，精致排版
-- 极简主义美学
+🎨 **现代科技感设计**
+- 渐变背景和光晕效果
+- 动态装饰元素 (浮动图形、网格背景)
+- 精致的悬浮和滚动动画
+- 克莱因蓝主题色贯穿设计
 
 🚀 **一键启动**
 - 零配置，运行 `./start.sh` 即可
@@ -253,6 +261,7 @@ SELECT * FROM posts;
 - Spring Boot 3.5
 - TypeScript 全覆盖
 - JWT 无状态认证
+- Tailwind CSS + 自定义动画
 
 ## 快速参考
 
