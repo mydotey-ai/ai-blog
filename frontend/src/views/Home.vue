@@ -1,16 +1,16 @@
 <template>
   <div class="relative">
     <GridBackground :with-gradient="true" />
-    <FloatingShapes />
+    <FloatingShapes class="hidden md:block" />
 
     <Navbar />
 
     <main class="container py-24 relative z-10">
-      <div class="mb-32 relative">
-        <h1 class="display-title text-7xl md:text-9xl mb-8 bg-gradient-to-r from-klein-blue via-purple-600 to-klein-blue bg-clip-text text-transparent animate-gradient" style="text-shadow: 0 0 40px rgba(0, 34, 255, 0.3);">
+      <div class="mb-16 md:mb-32 relative">
+        <h1 class="display-title text-5xl md:text-7xl lg:text-9xl mb-6 md:mb-8 bg-gradient-to-r from-klein-blue via-purple-600 to-klein-blue bg-clip-text text-transparent animate-gradient" style="text-shadow: 0 0 40px rgba(0, 34, 255, 0.3);">
           AI Blog
         </h1>
-        <p class="text-2xl text-secondary max-w-2xl">探索人工智能、机器学习和技术创新的前沿思想</p>
+        <p class="text-lg md:text-2xl text-secondary max-w-2xl">探索人工智能、机器学习和技术创新的前沿思想</p>
       </div>
 
       <div v-if="loading" class="text-center py-12">
@@ -21,7 +21,7 @@
         <p class="text-red-500">{{ error }}</p>
       </div>
 
-      <div v-else class="grid gap-24">
+      <div v-else class="grid gap-12 md:gap-24">
         <div
           v-for="post in posts"
           :key="post.id"
