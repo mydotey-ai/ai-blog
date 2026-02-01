@@ -29,3 +29,6 @@ frontend.log
 .backend.pid
 .frontend.pid
 nohup.out
+
+# Git worktrees
+.worktrees/
