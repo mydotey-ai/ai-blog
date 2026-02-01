@@ -2,11 +2,8 @@
   <div>
     <Navbar />
 
-    <main class="container py-24">
-      <div class="mb-32">
-        <h1 class="display-title text-7xl md:text-9xl mb-8">AI Blog</h1>
-        <p class="text-2xl text-secondary max-w-2xl">探索人工智能、机器学习和技术创新的前沿思想</p>
-      </div>
+    <main class="container py-32">
+      <h1 class="display-title text-6xl mb-16">{{ tagSlug }}</h1>
 
       <div v-if="loading" class="text-center py-12">
         <p class="text-secondary">加载中...</p>
@@ -23,47 +20,31 @@
           :post="post"
         />
       </div>
-
-      <div v-if="hasMore" class="text-center mt-24">
-        <button @click="loadMore" class="btn-primary">加载更多</button>
-      </div>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import { getPosts, type Post } from '@/services/api'
 import Navbar from '@/components/Navbar.vue'
 import PostCard from '@/components/PostCard.vue'
 
+const route = useRoute()
+const tagSlug = computed(() => route.params.slug as string)
 const posts = ref<Post[]>([])
 const loading = ref(true)
 const error = ref('')
-const page = ref(0)
-const totalPages = ref(0)
 
-const hasMore = computed(() => page.value < totalPages.value - 1)
-
-const loadPosts = async () => {
+onMounted(async () => {
   try {
-    loading.value = true
-    const response = await getPosts({ page: page.value, size: 10 })
-    posts.value.push(...response.data.content)
-    totalPages.value = response.data.totalPages
+    const response = await getPosts({ tag: tagSlug.value })
+    posts.value = response.data.content
   } catch (err: any) {
     error.value = err.message || '加载失败'
   } finally {
     loading.value = false
   }
-}
-
-const loadMore = () => {
-  page.value++
-  loadPosts()
-}
-
-onMounted(() => {
-  loadPosts()
 })
 </script>
