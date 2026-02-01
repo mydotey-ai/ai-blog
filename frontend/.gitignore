@@ -4,6 +4,9 @@ node_modules/
 # Build output
 dist/
 
+# Temporary files
+*.vue.js
+
 # Logs
 *.log
 npm-debug.log*
