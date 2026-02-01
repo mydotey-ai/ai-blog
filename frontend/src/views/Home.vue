@@ -22,11 +22,13 @@
       </div>
 
       <div v-else class="grid gap-24">
-        <PostCard
+        <div
           v-for="post in posts"
           :key="post.id"
-          :post="post"
-        />
+          class="post-card-animated fade-in-up-stagger"
+        >
+          <PostCard :post="post" />
+        </div>
       </div>
 
       <div v-if="hasMore" class="text-center mt-24">
@@ -43,6 +45,7 @@ import Navbar from '@/components/Navbar.vue'
 import PostCard from '@/components/PostCard.vue'
 import GridBackground from '@/components/decorations/GridBackground.vue'
 import FloatingShapes from '@/components/decorations/FloatingShapes.vue'
+import { useScrollAnimation } from '@/composables/useScrollAnimation'
 
 const posts = ref<Post[]>([])
 const loading = ref(true)
@@ -73,4 +76,6 @@ const loadMore = () => {
 onMounted(() => {
   loadPosts()
 })
+
+useScrollAnimation('.post-card-animated')
 </script>
