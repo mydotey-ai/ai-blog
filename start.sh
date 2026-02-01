@@ -134,7 +134,7 @@ fi
 
 # 启动后端（后台运行）
 echo "正在编译并启动后端服务（这可能需要几分钟）..."
-nohup ./gradlew bootRun > ../backend.log 2>&1 &
+nohup gradle bootRun > ../backend.log 2>&1 &
 BACKEND_PID=$!
 
 # 等待后端启动
